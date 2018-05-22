@@ -1,10 +1,11 @@
 import React from 'react'
+import './NoteList.css'
 
 const NoteList = () => {
     return (
-        <div className="NoteList" style={styles.noteList}>
-            <h3 style={styles.h3}>Notes</h3>
-                <ul id="notes" style={styles.notes}>
+        <div className="NoteList">
+            <h3>Notes</h3>
+                <ul id="notes">
                     <a className="active">
                         <li>
                             <div className="note">
@@ -50,34 +51,6 @@ const NoteList = () => {
             </ul>
         </div>
     )
-}
-
-const styles = {
-    noteList: {
-        borderLeft: '0.1rem solid #eee',
-        borderRight: '0.1rem soloid #eee',
-        width: '30rem',
-    },
-    h3: {
-        color: '#999',
-        textTransform: 'uppercase',
-        fontSize: '2rem',
-        fontFamily: 'Oxygen',
-        fontWeight: '300',
-        letterSpacing: '0.3rem',
-        margin: '2rem 2rem',
-    },
-    notes: {
-        borderTop: '0.1rem solid #eee',
-        overflowY: 'scroll',
-        height: 'calc(100vh - 7.2rem)',
-        listStyle: 'none',
-        marginTop: '1rem',
-        padding: '0',
-        width: '100%',
-        color: '#999',
-    },
-    
 }
 
 export default NoteList

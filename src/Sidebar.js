@@ -86,6 +86,10 @@ const styles = {
         transition: 'opacity 0.25s ease-in-out',
     },
     hover: {
+        position: 'absolute',
+        left: '0',
+        width: '100%',
+        transition: 'opacity 0.25s ease-in-out',
         opacity: '0',
     },
     signOut: {
