@@ -3,6 +3,7 @@ import React from 'react'
 import quill from './quill.svg'
 import newIcon from './new.png'
 import newHover from './new-hover.png'
+import './Sidebar.css'
 
 const Sidebar = () => {
     return (
@@ -26,13 +27,11 @@ const Sidebar = () => {
                 style={styles.newNote}
             >
                 <img 
-                    style={styles.aImg} 
                     src={newHover} 
                     alt="New note" 
                 />
                 <img 
                     className="outline" 
-                    style={styles.hover} 
                     src={newIcon} 
                     alt="New note" 
                 />

@@ -1,0 +1,15 @@
+  .Sidebar button {
+    background-color: transparent;
+    border: 0;
+    color: #008BF8;
+    cursor: pointer;
+  }
+  .Sidebar a img {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    transition: opacity 0.25s ease-in-out;
+  }
+  .Sidebar a:hover img.outline {
+    opacity: 0;
+  }
