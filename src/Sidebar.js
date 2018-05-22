@@ -41,7 +41,7 @@ const Sidebar = () => {
                 className="SignOut"
                 style={styles.signOut}
             >
-                <button style={styles.signOutB}>
+                <button style={styles.button}>
                     <i className="fa fa-sign-out" style={styles.signOutBI}></i>
                 </button>
             </div>
@@ -77,6 +77,7 @@ const styles = {
         border: '0',
         color: '#008BF8',
         cursor: 'pointer',
+        outline: 'none',
     },
     aImg: {
         position: 'absolute',
@@ -90,9 +91,6 @@ const styles = {
     signOut: {
         position: 'absolute',
         bottom: '1rem',
-    },
-    signOutB: {
-        outline: 'none',
     },
     signOutBI: {
         fontSize: '2rem',
