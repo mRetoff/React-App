@@ -1,54 +1,55 @@
 import React from 'react'
+import { StyleSheet, css } from 'aphrodite'
 
 import quill from './quill.svg'
 import newIcon from './new.png'
 import newHover from './new-hover.png'
-import './Sidebar.css'
 
 const Sidebar = () => {
     return (
         <nav 
-            className="Sidebar"
-            style={styles.sidebar}
+            className={css(styles.sidebar)}
         >
             <div 
-                className="logo"
-                style={styles.logo}
+                className={css(styles.logo)}
             >
                 <img 
-                    src={quill} 
-                    alt="Noteherder" 
-                    style={styles.logoImg}
+                    src={quill}
+                    alt='Noteherder'
+                    className={css(styles.logoImg)}
                 />
             </div>
             <a 
-                className="new-note" 
-                href="/notes" 
-                style={styles.newNote}
+                className={css(styles.newNote)}
+                href="/notes"
             >
                 <img 
                     src={newHover} 
-                    alt="New note" 
+                    alt="New note"
+                    className={css(styles.newNoteImg)} 
                 />
                 <img 
-                    className="outline" 
+                    className={css(styles.newNoteImg, styles.newNoteHover)}
                     src={newIcon} 
                     alt="New note" 
                 />
             </a>
             <div 
-                className="SignOut"
-                style={styles.signOut}
+                className={css(styles.signOut)}
             >
-                <button style={styles.button}>
-                    <i className="fa fa-sign-out" style={styles.signOutBI}></i>
+                <button className={css(styles.button)}>
+                    <i 
+                        className={`fas fa-sign-out-alt ${css(styles.signOutBI)}`}
+                        title='Signout'
+                    >
+                    </i>
                 </button>
             </div>
         </nav>
     )
 }
 
-const styles = {
+const styles = StyleSheet.create({
     sidebar: {
         width: '6rem',
         backgroundColor: '#f3f3f3',
@@ -71,25 +72,16 @@ const styles = {
         position: 'relative',
         width: '4rem',
     },
-    button: {
-        backgroundColor: 'transparent',
-        border: '0',
-        color: '#008BF8',
-        cursor: 'pointer',
-        outline: 'none',
-    },
-    aImg: {
+    newNoteImg: {
         position: 'absolute',
         left: '0',
         width: '100%',
         transition: 'opacity 0.25s ease-in-out',
     },
-    hover: {
-        position: 'absolute',
-        left: '0',
-        width: '100%',
-        transition: 'opacity 0.25s ease-in-out',
-        opacity: '0',
+    newNoteHover: {
+        ':hover': {
+            opacity: '0',
+        },
     },
     signOut: {
         position: 'absolute',
@@ -98,6 +90,13 @@ const styles = {
     signOutBI: {
         fontSize: '2rem',
     },
-}
+    button: {
+        backgroundColor: 'transparent',
+        border: '0',
+        color: '#008bf8',
+        cursor: 'pointer',
+        outline: 'none',
+      },
+})
 
 export default Sidebar
