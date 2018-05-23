@@ -5,7 +5,7 @@ import quill from './quill.svg'
 import newIcon from './new.png'
 import newHover from './new-hover.png'
 
-const Sidebar = () => {
+const Sidebar = ({ resetCurrentNote }) => {
     return (
         <nav 
             className={css(styles.sidebar)}
@@ -22,6 +22,10 @@ const Sidebar = () => {
             <a 
                 className={css(styles.newNote)}
                 href="/notes"
+                onClick={(ev) => {
+                    ev.preventDefault()
+                    resetCurrentNote()
+                }}
             >
                 <img 
                     src={newHover} 
