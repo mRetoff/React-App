@@ -8,23 +8,8 @@ class Main extends React.Component {
     constructor() {
         super()
         this.state = {
-            currentNote: {
-                id: null,
-                title: '',
-                body: '',
-            },
-            notes: [
-                {
-                  id: 1,
-                  title: 'JS thoughts',
-                  body: 'I just love JS so much.',
-                },
-                {
-                  id: 2,
-                  title: 'Breakfast',
-                  body: 'FOR IT!',
-                },
-            ],
+            currentNote: this.blankNote(),
+            notes: [],
         }
     }
 
@@ -44,6 +29,20 @@ class Main extends React.Component {
         this.setCurrentNote(this.blankNote())
     }
 
+    saveNote = (note) => {
+        const notes = [...this.state.notes]
+
+        if (note.id) {
+            const i = notes.findIndex(currentNote => currentNote.id === note.id)
+            notes[i] = note
+        } else {
+            note.id = Date.now()
+            notes.push(note)
+        }
+
+        this.setState({ notes, currentNote: note })
+    }
+
     render() {
         return (
             <div 
@@ -55,7 +54,11 @@ class Main extends React.Component {
                     notes={this.state.notes}
                     setCurrentNote={this.setCurrentNote}    
                 />
-                <NoteForm currentNote={this.state.currentNote} />
+                <NoteForm 
+                    currentNote={this.state.currentNote}
+                    saveNote={this.saveNote}
+
+                />
             </div>
         )
     }
