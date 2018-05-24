@@ -13,8 +13,8 @@ const NoteForm = ({ currentNote, saveNote, deleteNote }) => {
         <div className="form-actions">
           <button 
             type="button"
-            onClick={() => {
-              deleteNote()
+            onClick={(ev) => {
+              deleteNote(currentNote)
             }}  
           >
             <i className="far fa-trash-alt"></i>

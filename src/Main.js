@@ -43,7 +43,10 @@ class Main extends React.Component {
         this.setState({ notes, currentNote: note })
     }
 
-    deleteNote = () => {
+    deleteNote = (note) => {
+        const notes = [...this.state.notes]
+        const i = notes.indexOf(note)
+        notes.splice(i, 1)
         
     }
 
