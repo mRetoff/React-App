@@ -3,7 +3,7 @@ import React from 'react'
 import quill from './quill.svg'
 import googleLogo from './google.svg'
 import './SignIn.css'
-import { auth, githubProv } from './base'
+import { auth, githubProv, googleProv } from './base'
 
 const SignIn = () => {
     const authenticate = (provider) => {
@@ -12,7 +12,7 @@ const SignIn = () => {
     return (
         <div className="SignIn">
             <header className="Header">
-                <img src={quill} alt="" />
+                <img src={quill} alt="Noteherder" />
                 <span className="title">Noteherder</span>
             </header>
             <main>
@@ -22,7 +22,7 @@ const SignIn = () => {
                     <i className="fab fa-github"></i>
                     Sign in with GitHub
                 </button>
-                <button className="google">
+                <button className="google" onClick={() => authenticate(googleProv)}>
                     <img src={googleLogo} alt="" />
                     Sign in with Google
                 </button>
