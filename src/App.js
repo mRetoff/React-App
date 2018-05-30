@@ -77,12 +77,6 @@ class App extends Component {
             )}
           />
         </Switch>
-        {/*
-          this.signedIn()
-            ? <Main signOut={this.signOut} uid={this.state.uid} />
-            : <SignIn />
-        */}
-
       </div>
     )
   }
