@@ -1,9 +1,10 @@
-import React, { Component } from 'react';
-import './App.css';
-import Main from './Main';
-import SignIn from './SignIn'
-import { auth } from './base'
+import React, { Component } from 'react'
 import { Switch, Route, Redirect } from 'react-router-dom'
+
+import './App.css'
+import { auth } from './base'
+import Main from './Main'
+import SignIn from './SignIn'
 
 class App extends Component {
   state = {
@@ -12,12 +13,12 @@ class App extends Component {
 
   componentWillMount() {
     const uid = localStorage.getItem('uid')
-    if(uid) {
-      this.setState( {uid} )
+    if (uid) {
+      this.setState({ uid })
     }
     auth.onAuthStateChanged(
       (user) => {
-        if(user) {
+        if (user) {
           this.handleAuth(user)
         } else {
           this.handleUnauth()
@@ -31,9 +32,9 @@ class App extends Component {
     localStorage.setItem('uid', user.uid)
   }
 
-  handleUnauth = (user) => {
+  handleUnauth = () => {
     this.setState({ uid: null })
-    localStorage.removeItem('uid', user.uid)
+    localStorage.removeItem('uid')
   }
 
   signOut = () => {
@@ -50,17 +51,21 @@ class App extends Component {
         <Switch>
           <Route
             path="/sign-in"
-            render={() => (
+            render={navProps => (
               this.signedIn()
                 ? <Redirect to="/notes" />
-                : <SignIn />
+                : <SignIn {...navProps} />
             )}
           />
           <Route
             path="/notes"
-            render={() => (
+            render={navProps => (
               this.signedIn()
-                ? <Main signOut={this.signOut} uid={this.state.uid} />
+                ? <Main
+                    signOut={this.signOut}
+                    uid={this.state.uid}
+                    {...navProps}
+                  />
                 : <Redirect to="/sign-in" />
             )}
           />
@@ -72,13 +77,15 @@ class App extends Component {
             )}
           />
         </Switch>
-        { /*this.signedIn() 
-          ? <Main signOut={this.signOut} uid={this.state.uid} /> 
-          : <SignIn handleAuth={this.handleAuth}/> 
+        {/*
+          this.signedIn()
+            ? <Main signOut={this.signOut} uid={this.state.uid} />
+            : <SignIn />
         */}
+
       </div>
-    );
+    )
   }
 }
 
-export default App;
+export default App
