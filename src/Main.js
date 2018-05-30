@@ -40,6 +40,7 @@ class Main extends Component {
   }
 
   saveNote = (note) => {
+      let shouldRedir = false
     const notes = [...this.state.notes]
 
     if (note.id) {
@@ -50,9 +51,16 @@ class Main extends Component {
       // new note
       note.id = Date.now()
       notes.push(note)
+      shouldRedir = true
     }
 
-    this.setState({ notes, currentNote: note })
+    this.setState(
+      { notes },
+        () => {
+          if(shouldRedir)
+            this.props.history.push(`/notes/${note.id}`)
+        }
+    )
   }
 
   removeCurrentNote = () => {
