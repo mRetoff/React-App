@@ -23,8 +23,11 @@ class Main extends Component {
   }
 
   saveNote = (note) => {
-      let shouldRedir = false
+    let shouldRedir = false
     const notes = [...this.state.notes]
+
+    const timeStamp = Date.now()
+    note.updatedAt = timeStamp
 
     if (note.id) {
       // existing note
@@ -36,6 +39,9 @@ class Main extends Component {
       notes.push(note)
       shouldRedir = true
     }
+    notes.sort((a, b) => {
+      return b.updatedAt - a.updatedAt
+    })
 
     this.setState(
       { notes },
